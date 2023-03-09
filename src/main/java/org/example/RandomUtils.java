@@ -16,7 +16,5 @@ public class RandomUtils {
         return new Random().nextInt(3);
     } // savol shuni [1:3] oralig'ida qilib berish uchun nima qilamiz
 
-//    public static int getAquariumSize(){
-//        return new Random().nextInt(30);
-//    }
+
 }
