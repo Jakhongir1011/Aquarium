@@ -5,9 +5,9 @@ import java.util.Random;
 public class RandomUtils {
 
     public static byte getMaxAge() {
-        byte b = (byte) new Random().nextInt(20);
-        if (b<10){
-            b=10;
+        byte b = (byte) new Random().nextInt(15);
+        if (b<5){
+            b=5;
             return b;
         }
         return b;
@@ -15,7 +15,7 @@ public class RandomUtils {
 
     public static int getFishNumber(){
         int i = new Random().nextInt(3);
-        if (i<=0){
+        if (i<1){
             i=1;
             return i;
         }
@@ -23,7 +23,12 @@ public class RandomUtils {
     }
 
         public static int getDateNumber(){
-        return new Random().nextInt(10);
+            int i = new Random().nextInt(10);
+            if (i<5){
+                i=5;
+                return 5;
+            }
+            return i;
     }
 
 }

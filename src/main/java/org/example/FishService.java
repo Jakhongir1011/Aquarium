@@ -27,27 +27,32 @@ public class FishService {
     }
 
 
-    public static synchronized Fish fishDating(Fish currentFish) { // 100
+    public static synchronized Fish fishDating(Fish currentFish) {
 
         int dateNumber = currentFish.getDateNumber();
         Gender gender = currentFish.getGender();
 
         Fish pairFish = fishList.stream().filter((fish) -> {
             if (!fish.isMarried()) {
-                if (!fish.getGender().equals(gender) && fish.getDateNumber() == dateNumber) {
+                if (!fish.getGender().equals(gender) && fish.getDateNumber() == dateNumber && fish.isDead() && currentFish.isDead()) {
                     fish.setMarried(true);
                     currentFish.setMarried(true);
                     return true;
                 }
             }
+
             return false;
         }).findFirst().orElse(null);
 
         if (pairFish != null) {
-            System.out.println("\n Yangi baliqlar tugi'ldi");
+            System.out.println("\n ---------------------------");
             birthFish(currentFish.getFishId() + " va " + pairFish.getFishId() + " baliqlar ");
         }
         return pairFish;
+    }
+
+    public  static synchronized boolean removeFish(Fish removeFish){
+        return fishList.remove(removeFish);
     }
 
 }
