@@ -10,6 +10,10 @@ public class FishService {
         int maleFishNumber = RandomUtils.getFishNumber();
         int femaleFishNumber = RandomUtils.getFishNumber();
 
+        System.out.println(maleFishNumber + " ta erkaka baliq paydo boldi " + Gender.MALE);
+
+        System.out.println(femaleFishNumber + " ta ayol baliq paydo bo'ldi " + Gender.FEMALE);
+
         for (int i = 0; i < maleFishNumber + femaleFishNumber; i++) {
             if (i < maleFishNumber) {
                 Fish fish = Fish.buildFish(Gender.MALE, parents);
@@ -19,30 +23,31 @@ public class FishService {
                 fishList.add(fish);
             }
         }
-
+        System.out.println(fishList.size() + " ta jami baliqlar soni ");
     }
 
 
-    public static synchronized Fish fishDating(Fish currentFish) { // 100
+//    public static synchronized Fish fishDating(Fish currentFish) { // 100
+//
+//        int dateNumber = currentFish.getDateNumber();
+//        Gender gender = currentFish.getGender();
+//
+//        Fish pairFish = fishList.stream().filter((fish) -> {
+//            if (fish.getAge() >= 18 && fish.getAge() <= 30 && !fish.isMarried()) {
+//                if (!fish.getGender().equals(gender) && fish.getDateNumber() == dateNumber) {
+//                    fish.setMarried(true);
+//                    currentFish.setMarried(true);
+//                    return true;
+//                }
+//            }
+//            return false;
+//        }).findFirst().orElse(null);
+//
+//        if (pairFish != null) {
+//            System.out.println("\n =======================================================================");
+//            birthFish(currentFish.getFishId() + " va " + pairFish.getFishId() + " baliqlar ");
+//        }
+//        return pairFish;
+//    }
 
-        int dateNumber = currentFish.getDateNumber();
-        Gender gender = currentFish.getGender();
-
-        Fish pairFish = fishList.stream().filter((fish) -> {
-            if (fish.getAge() >= 18 && fish.getAge() <= 30 && !fish.isMarried()) {
-                if (!fish.getGender().equals(gender) && fish.getDateNumber() == dateNumber) {
-                    fish.setMarried(true);
-                    currentFish.setMarried(true);
-                    return true;
-                }
-            }
-            return false;
-        }).findFirst().orElse(null);
-
-        if (pairFish != null) {
-            System.out.println("\n =======================================================================");
-            birthFish(currentFish.getFishId() + " va " + pairFish.getFishId() + " baliqlar ");
-        }
-        return pairFish;
-    }
 }
