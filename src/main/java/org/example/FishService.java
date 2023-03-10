@@ -6,7 +6,7 @@ import java.util.Set;
 public class FishService {
     static Set<Fish> fishList = new HashSet<>();
     public static void birthFish(String parents) {
-        System.out.println("\n =======================================================================");
+        System.out.println("\n Baliqlar tug'ildi !");
         int maleFishNumber = RandomUtils.getFishNumber();
         int femaleFishNumber = RandomUtils.getFishNumber();
 
@@ -33,7 +33,7 @@ public class FishService {
         Gender gender = currentFish.getGender();
 
         Fish pairFish = fishList.stream().filter((fish) -> {
-            if (fish.getAge() >= 18 && fish.getAge() <= 30 && !fish.isMarried()) {
+            if (!fish.isMarried()) {
                 if (!fish.getGender().equals(gender) && fish.getDateNumber() == dateNumber) {
                     fish.setMarried(true);
                     currentFish.setMarried(true);
@@ -44,7 +44,7 @@ public class FishService {
         }).findFirst().orElse(null);
 
         if (pairFish != null) {
-            System.out.println("\n =======================================================================");
+            System.out.println("\n Yangi baliqlar tugi'ldi");
             birthFish(currentFish.getFishId() + " va " + pairFish.getFishId() + " baliqlar ");
         }
         return pairFish;

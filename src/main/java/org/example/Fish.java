@@ -141,21 +141,23 @@ public class Fish extends Thread {
                     }
                 }
             }
-        }
 
-        // Baliqning uchrashib qolishi va nasil kopayishi mumkin
-        // Birinchisi u tirik bo'lishi kerak
-            if (this.age >= 18 && this.age <= 30 && !this.isMarried) {
-                this.dateNumber = RandomUtils.getDateNumber();
-                Fish pairFish = FishService.fishDating(this);
-                if (pairFish != null) {
-                    System.out.println(this.getFishId() + "- bilan " + pairFish.getFishId() + " turmush qurishidi " +
-                                       " va bunda " + this.getFishId() + " ni yoshi " + this.age + " edi "
-                                       + pairFish.getFishId() + " ni yoshi " + pairFish.getAge() + " edi ");
+            // Baliqning uchrashib qolishi va nasil kopayishi mumkin
+            // Birinchisi u tirik bo'lishi kerak
+            if (!this.isMarried) {
+                if (this.isDead){
+                    this.dateNumber = RandomUtils.getDateNumber(); //
+                    Fish pairFish = FishService.fishDating(this);
+
+                    if (pairFish != null) {
+                        System.out.println(this.getFishId() + "- bilan " + pairFish.getFishId() + " turmush qurishidi " +
+                                " va bunda " + this.getFishId() + " ni yoshi " + this.age + " edi "
+                                + pairFish.getFishId() + " ni yoshi " + pairFish.getAge() + " edi ");
+                    }
+
                 }
             }
 
-
-
+        }
     }
 }
