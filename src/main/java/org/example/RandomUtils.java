@@ -13,7 +13,6 @@ public class RandomUtils {
         return b;
     }
 
-
     public static int getFishNumber(){
         int i = new Random().nextInt(3);
         if (i<=0){
@@ -21,6 +20,10 @@ public class RandomUtils {
             return i;
         }
         return i;
+    }
+
+        public static int getDateNumber(){
+        return new Random().nextInt(10);
     }
 
 }

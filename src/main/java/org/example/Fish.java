@@ -93,6 +93,8 @@ public class Fish extends Thread {
         return isDead;
     }
 
+
+
     public static Fish buildFish(Gender gender, String parents) {
         if (FishService.fishList.size() >= 15) {
             System.out.println("Akkvarumga baliqlarga to'ldi");
@@ -102,6 +104,8 @@ public class Fish extends Thread {
         fish.start(); //Thread  bajaralishini boshaydi JVM thread da run() methodni chiradi
         return fish;
     }
+
+
 
     @Override
     public void run() {
@@ -129,28 +133,29 @@ public class Fish extends Thread {
             // Baliqni vafot etishi(Max yoshiga yetganda baliq vafot etadi)
             if (this.age == this.maxAge) {
                 this.isDead=false;
-                System.out.println(this.getFishId() + " baliq "+ this.maxAge + " Umir ko'rdi va baliq vafot etti " + this.isDead);
-               }
-
+                for (Fish fish : FishService.fishList) {
+                    if (fish.getFishId()==this.fishId){
+                        System.out.println(this.getFishId() + " baliq "+ this.maxAge + " Umir ko'rdi va baliq vafot etti " + this.isDead);
+                        fish.stop();
+                        FishService.fishList.remove(fish);
+                    }
+                }
             }
-
         }
 
         // Baliqning uchrashib qolishi va nasil kopayishi mumkin
         // Birinchisi u tirik bo'lishi kerak
-//            if (this.age >= 18 && this.age <= 30 && !this.isMarried) {
-//                this.dateNumber = RandomUtils.getDateNumber();
-//                Fish pairFish = FishService.fishDating(this);
-//                if (pairFish != null) {
-//                    System.out.println(this.getFishId() + "- bilan " + pairFish.getFishId() + " turmush qurishidi " +
-//                                       " va bunda " + this.getFishId() + " ni yoshi " + this.age + " edi "
-//                                       + pairFish.getFishId() + " ni yoshi " + pairFish.getAge() + " edi ");
-//                }
-//            }
-//
-//
-//
-//        }
-//        this.isDead=true;
-    }
+            if (this.age >= 18 && this.age <= 30 && !this.isMarried) {
+                this.dateNumber = RandomUtils.getDateNumber();
+                Fish pairFish = FishService.fishDating(this);
+                if (pairFish != null) {
+                    System.out.println(this.getFishId() + "- bilan " + pairFish.getFishId() + " turmush qurishidi " +
+                                       " va bunda " + this.getFishId() + " ni yoshi " + this.age + " edi "
+                                       + pairFish.getFishId() + " ni yoshi " + pairFish.getAge() + " edi ");
+                }
+            }
 
+
+
+    }
+}
