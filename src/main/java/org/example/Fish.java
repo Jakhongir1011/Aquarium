@@ -98,7 +98,7 @@ public class Fish extends Thread {
              *  sleep Joriy bajarilayotgan thread ni belgilangan millisekundlar uchun uyqu holatiga keltiradi vaqtincha bajarilishni toxtatadi.
              */
             try {
-                Thread.sleep(2000);
+                Thread.sleep(2500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
