@@ -55,7 +55,6 @@ public class FishService {
     }
 
     /**
-     *
      * @param removeFish Umrini yashagan baliqni o'chirish methodi
      * @return true or false
      */
